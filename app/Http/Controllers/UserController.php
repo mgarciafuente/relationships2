@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 
 class UserController extends Controller
@@ -20,15 +20,12 @@ class UserController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'lastname' => 'required'
-        ]);
+        $validated = $request->validated();
 
-        $name = $request->input('name');
-        $lastname = $request->input('lastname');
+        $name = $validated['name'];
+        $lastname = $validated['lastname'];
 
         User::create(['name' => $name, 'lastname' => $lastname]);
 
@@ -36,30 +33,28 @@ class UserController extends Controller
     }
 
 
-    public function edit(User $id)
+    public function edit(User $user)
     {
-        return view('user.edit', ['user' => $id]);
+        return view('user.edit', ['user' => $user]);
     }
 
-    public function update(Request $request, User $id)
+    public function update(UserRequest $request, User $user)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'lastname' => 'required'
-        ]);
+        $validated = $request->validated();
 
-        $name = $request->input('name');
-        $lastname = $request->input('lastname');
+        $name = $validated['name'];
+        $lastname = $validated['lastname'];
 
-        $id->update(['name' => $name, 'lastname' => $lastname]);
+        $user->update(['name' => $name, 'lastname' => $lastname]);
 
         return redirect(route('users'));
+        
     }
 
 
-    public function delete(User $id)
+    public function delete(User $user)
     {
-        $id->delete();
+        $user->delete();
 
         return redirect(route('users'));
     }

@@ -8,13 +8,13 @@
             <tr>
                 <td>{{ $user->name }} {{ $user->lastname }}</td>
                 <td>
-                    <form action="{{ route('user-edit', ['id' => $user->id]) }}" method="post">
+                    <form action="{{ route('user-edit', ['user' => $user->id]) }}" method="get">
                         @csrf
                         <input type="submit" value="Edit"/>
                     </form>
                 </td>
                 <td>
-                    <form action="{{ route('user-delete', ['id' => $user->id]) }}" method="post">
+                    <form action="{{ route('user-delete', ['user' => $user->id]) }}" method="post">
                         @csrf
                         @method('delete')
                         <input type="submit" value="Delete"/>

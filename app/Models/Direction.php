@@ -10,22 +10,20 @@ use Laravel\Sanctum\HasApiTokens;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class User extends Authenticatable
+class Direction extends Authenticatable
 {
 
     use SoftDeletes;
 
     protected $fillable = [
-        'name',
-        'lastname',
+        'street',
+        'number',
+        'postal_code',
+        'city',
     ];
 
-    public function posts() {
-        return $this->hasMany('App\Models\Post');
-    }
-
-    public function direction() {
-        return $this->hasOne('App\Models\Direction');
+    public function user() {
+        return $this->belongsTo('users');
     }
     
 }
