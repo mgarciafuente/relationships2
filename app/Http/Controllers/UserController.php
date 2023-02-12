@@ -8,9 +8,9 @@ use App\Models\User;
 class UserController extends Controller
 {
 
-    public function show()
+    public function index()
     {
-        return view('user.show', ['users' => User::all()]);
+        return view('user.index', ['users' => User::all()]);
     }
 
 

@@ -14,6 +14,7 @@ class User extends Authenticatable
 {
 
     use SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
         'name',

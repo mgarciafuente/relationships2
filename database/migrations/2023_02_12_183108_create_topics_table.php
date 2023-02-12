@@ -13,26 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('directions', function (Blueprint $table) {
+        Schema::create('topics', function (Blueprint $table) {
             $table->id();
-            $table->string('street');
-            $table->integer('number');
-            $table->integer('postal_code');
-            $table->string('city');
-            $table->unsignedBigInteger('user_id')->unique()->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->softDeletes();
+            $table->string('title');
+            $table->string('text');
             $table->timestamps();
         });
     }
 
-    /**
+    /** 
      * Reverse the migrations.
      *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('directions');
+        Schema::dropIfExists('topics');
     }
 };

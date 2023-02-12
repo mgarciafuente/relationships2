@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('directions', function (Blueprint $table) {
+        Schema::create('post_topic', function (Blueprint $table) {
             $table->id();
-            $table->string('street');
-            $table->integer('number');
-            $table->integer('postal_code');
-            $table->string('city');
-            $table->unsignedBigInteger('user_id')->unique()->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->softDeletes();
+            $table->unsignedBigInteger('user_id');
+	        $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('topic_id');
+	        $table->foreign('topic_id')->references('id')->on('topics');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('directions');
+        Schema::dropIfExists('post_topic');
     }
 };

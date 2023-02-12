@@ -15,15 +15,14 @@
             <li><a href="{{ route('users') }}">Users</a></li>
             <li><a href="{{ route('user-create') }}">Create user</a></li>
             <br>
-            {{-- <li><a href="{{ route('directions') }}">Directions</a></li>
-            <li><a href="{{ route('insert-direction') }}">Insert direction</a></li>
-            <li><a href="{{ route('assign-direction') }}">Assign direction</a></li>
+            <li><a href="{{ route('directions') }}">Directions</a></li>
+            <li><a href="{{ route('direction-create') }}">Create direction</a></li>
             <br>
             <li><a href="{{ route('posts') }}">Posts</a></li>
-            <li><a href="{{ route('insert-post') }}">Insert post</a></li>
+            <li><a href="{{ route('post-create') }}">Create post</a></li>
             <br>
-            <li><a href="{{ route('temas') }}">Temas</a></li>
-            <li><a href="{{ route('insert-tema') }}">Insert tema</a></li> --}}
+            <li><a href="{{ route('topics') }}">Topics</a></li>
+            <li><a href="{{ route('topic-create') }}">Create topic</a></li>
         </ul>
     </nav>
     <br>

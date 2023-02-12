@@ -14,6 +14,7 @@ class Direction extends Authenticatable
 {
 
     use SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
         'street',
@@ -23,7 +24,7 @@ class Direction extends Authenticatable
     ];
 
     public function user() {
-        return $this->belongsTo('users');
+        return $this->belongsTo('App\Models\User');
     }
     
 }

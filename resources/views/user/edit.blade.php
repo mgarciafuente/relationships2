@@ -9,6 +9,7 @@
         <input type="text" name="name" placeholder="Name" value="{{ old('name', $user->name) }}"/>
         @error('name') {{ $message }} @enderror
         <input type="text" name="lastname" placeholder="Lastname" value="{{ old('lastname', $user->lastname) }}"/>
+        @error('lastname') {{ $message }} @enderror
         <input type="submit" value="Update"/>
     </form>
 @endsection
