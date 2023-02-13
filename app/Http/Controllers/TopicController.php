@@ -32,49 +32,9 @@ class TopicController extends Controller
         return redirect(route('topics'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Topic  $topic
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Topic $topic)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Topic  $topic
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Topic $topic)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Topic  $topic
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Topic $topic)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Topic  $topic
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Topic $topic)
     {
         $topic->forceDelete();
-        return redirect(view('topics'));
+        return redirect(route('topics'));
     }
 }

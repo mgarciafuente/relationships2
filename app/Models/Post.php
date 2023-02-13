@@ -21,6 +21,6 @@ class Post extends Model
     }
 
     public function topics() {
-        return $this->hasMany('App\Models\Topic');
+        return $this->belongsToMany('App\Models\Topic');
     }
 }

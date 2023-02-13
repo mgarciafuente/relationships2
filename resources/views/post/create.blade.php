@@ -18,7 +18,7 @@
         @error('user') {{ $message }} @enderror
         @foreach($topics as $topic)
             <label>{{ $topic->title }}
-                <input type="checkbox" name="topic[]" value="{{ $topic->id }}"/>
+                <input type="checkbox" name="topics[]" value="{{ $topic->id }}"/>
             </label>
         @endforeach
         @error('topic') {{ $message }} @enderror

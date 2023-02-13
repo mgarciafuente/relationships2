@@ -28,13 +28,10 @@ class PostController extends Controller
         $title = $validated['title'];
         $text = $validated['text'];
         $user = User::find($validated['user']);
-        $topics = Topic::where('id', 'in', $validated['topic']);
+        $topics = $validated['topics'];
 
         $post = $user->posts()->create(['title' => $title, 'text' => $text]);
-
-        foreach($topics as $topic) {
-            $post->topics()->attach($topic->id);
-        }
+        $post->topics()->attach($topics);
 
         return redirect(route('posts'));
     }
@@ -62,6 +59,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        $post->topics()->detach();
         $post->forceDelete();
 
         return redirect(route('posts'));

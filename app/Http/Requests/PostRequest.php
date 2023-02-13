@@ -13,7 +13,7 @@ class PostRequest extends FormRequest
             'title' => 'required|max:191',
             'text' => 'required|max:191',
             'user' => 'required',
-            'topic' => 'required'
+            'topics' => 'required'
         ]; 
     }
 
