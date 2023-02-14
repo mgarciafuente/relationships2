@@ -21,7 +21,7 @@
                 <input type="checkbox" name="topics[]" value="{{ $topic->id }}"/>
             </label>
         @endforeach
-        @error('topic') {{ $message }} @enderror
+        @error('topics') {{ $message }} @enderror
         <input type="submit" value="Store"/>
     </form>
 @endsection

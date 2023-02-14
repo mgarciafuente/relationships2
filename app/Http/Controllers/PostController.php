@@ -38,9 +38,13 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $users = User::where('id', '!=', $post->user_id)->get();
-        $current = $post->user()->first();
-        return view('post.edit', compact('post', 'users', 'current'));
+        $users = User::all();
+        $topics = Topic::all();
+        $currentTopics = [];
+        foreach($post->topics as $topic) {
+            array_push($currentTopics, $topic->pivot->topic_id);
+        }
+        return view('post.edit', compact('post', 'users', 'topics', 'currentTopics'));
     }
 
     public function update(PostRequest $request, Post $post)
@@ -50,8 +54,10 @@ class PostController extends Controller
         $title = $validated['title'];
         $text = $validated['text'];
         $user = User::find($validated['user']);
+        $topics = $request['topics'];
 
         $post->update(compact('title', 'text'));
+        $post->topics()->sync($topics);
         $user->posts()->save($post);
 
         return redirect(route('posts'));

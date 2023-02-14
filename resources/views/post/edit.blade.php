@@ -11,12 +11,17 @@
         <input type="text" name="text" placeholder="Text" value="{{ old('text', $post->text ) }}"/>
         @error('text') {{ $message }} @enderror
         <select name="user">
-            @if($current) <option value="{{ $current->id }}" selected>{{ $current->name ." ". $current->lastname }}</option> @endif
             @foreach($users as $user)
-                <option value="{{ $user->id }}">{{ $user->name ." ". $user->lastname }}</option>
+                <option value="{{ $user->id }}" @if($user == $post->user()->first()) selected @endif>{{ $user->name ." ". $user->lastname }}</option>
             @endforeach
         </select>
         @error('user') {{ $message }} @enderror
+        @foreach($topics as $topic)
+            <label>{{ $topic->title }}
+                <input type="checkbox" name="topics[]" value="{{ $topic->id }}" @if(in_array($topic->id, $currentTopics)) checked @endif/>
+            </label>
+        @endforeach
+        @error('topics') {{ $message }} @enderror
         <input type="submit" value="Update"/>
     </form>
 @endsection
