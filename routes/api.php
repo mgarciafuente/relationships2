@@ -26,7 +26,7 @@ Route::get('posts/recent', function() {
 });
 
 Route::get('posts/{user}', function(User $user) {
-    //$query = Post::where('user_id', '=', $user->id)->get();
-    $query = $user->posts()->get();
+    //$query = Post::where('user_id', '=', $user->id)->orderBy('title')->get();
+    $query = $user->posts()->orderBy('title')->get();
     return $query;
 });
