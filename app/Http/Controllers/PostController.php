@@ -42,7 +42,7 @@ class PostController extends Controller
         $topics = Topic::all();
         $currentTopics = [];
         foreach($post->topics as $topic) {
-            array_push($currentTopics, $topic->pivot->topic_id);
+            array_push($currentTopics, $topic->id);
         }
         return view('post.edit', compact('post', 'users', 'topics', 'currentTopics'));
     }

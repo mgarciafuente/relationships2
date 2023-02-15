@@ -15,9 +15,8 @@
         <input type="text" name="city" placeholder="city" value="{{ old('city', $direction->city) }}"/>
         @error('city') {{ $message }} @enderror
         <select name="user">
-            @if($current) <option value="{{ $current->id }}" selected>{{ $current->name ." ". $current->lastname}}</option>@endif
             @foreach($users as $key => $user)
-                <option value="{{ $user->id }}">{{ $user->name ." ". $user->lastname}}</option>
+                <option value="{{ $user->id }}" @if($user->id == $direction->user()->first()->id) selected @endif>{{ $user->name ." ". $user->lastname}}</option>
             @endforeach
         </select>
         <input type="submit" value="Update"/>

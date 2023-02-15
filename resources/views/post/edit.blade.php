@@ -12,7 +12,7 @@
         @error('text') {{ $message }} @enderror
         <select name="user">
             @foreach($users as $user)
-                <option value="{{ $user->id }}" @if($user == $post->user()->first()) selected @endif>{{ $user->name ." ". $user->lastname }}</option>
+                <option value="{{ $user->id }}" @if($user->id == $post->user_id) selected @endif>{{ $user->name ." ". $user->lastname }}</option>
             @endforeach
         </select>
         @error('user') {{ $message }} @enderror

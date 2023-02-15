@@ -53,7 +53,7 @@ Route::controller(PostController::class)->group(function() {
     Route::get('/posts', 'index')->name('posts');
 
     Route::get('/post-create', 'create')->name('post-create');
-    Route::post('/post-store', 'store')->name('post-store');
+    Route::post('/post-store', 'store')->name('post-store')->middleware('checkName');
 
     Route::get('/post-edit/{post}', 'edit')->name('post-edit');
     Route::put('/post-update/{post}', 'update')->name('post-update');

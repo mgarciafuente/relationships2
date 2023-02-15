@@ -20,6 +20,7 @@ class PostRequest extends FormRequest
     public function messages()
     {
         return [
+            'topics.required' => 'A topic must be chosen at least',
             'required' => 'A :attribute is required',
             'max' => 'A :attribute is :max characters max.'
         ];

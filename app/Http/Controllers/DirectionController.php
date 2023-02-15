@@ -53,8 +53,9 @@ class DirectionController extends Controller
         $assignedUsers = Direction::where('user_id', '!=', null)->where('deleted_at', '=', null)->get('user_id');
         $users = User::whereNotIn('id', $assignedUsers)->get();
         $current = $direction->user()->first();
+        $users->push($current);
 
-        return view('direction.edit', compact('direction', 'users', 'current'));
+        return view('direction.edit', compact('direction', 'users'));
     }
 
     public function update(DirectionRequest $request, Direction $direction)

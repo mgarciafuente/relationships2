@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Topic;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
@@ -34,7 +35,19 @@ class TopicController extends Controller
 
     public function destroy(Topic $topic)
     {
-        $topic->forceDelete();
+        $allPosts = Post::all();
+        $allUsedTopics = [];
+
+        foreach($allPosts as $post) {
+            foreach($post->topics()->get() as $usedTopic) {
+                array_push($allUsedTopics, $usedTopic->id);
+            }
+        }
+
+        if(!in_array($topic->id, $allUsedTopics)) {
+            $topic->forceDelete();
+        }
+        
         return redirect(route('topics'));
     }
 }
